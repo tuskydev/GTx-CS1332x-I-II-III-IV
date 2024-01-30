@@ -23,13 +23,10 @@ public class TutorialAssignment {
   }
 
   public static void main(String[] args) {
-    // Create an instance of the class
-    TutorialAssignment one = new TutorialAssignment();
-
     // Call the method on the instance
     int[] array = {1, 2, 3, 4, 5};
 
     // Print the result
-    System.out.println(one.tutorialAssignment(array));
+    System.out.println(TutorialAssignment.tutorialAssignment(array));
   }
 }
