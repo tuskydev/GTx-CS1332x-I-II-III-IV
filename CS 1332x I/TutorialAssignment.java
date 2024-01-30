@@ -23,7 +23,7 @@ public class TutorialAssignment {
   }
 
   public static void main(String[] args) {
-    // Call the method on the instance
+    // Create the sample array
     int[] array = {1, 2, 3, 4, 5};
 
     // Print the result
