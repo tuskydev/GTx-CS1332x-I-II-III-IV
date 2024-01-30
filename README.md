@@ -1,53 +1,46 @@
-# DESCRIPTIVE-TITLE Solo Project 
-### A repo made to test Semantic-UI-React's NPM that has a popup modal that display's necessary info.
+# CS1332x Solo Project
+### This repository is dedicated to the courses CS1332x I-IV, offering comprehensive coverage of Data Structures and Algorithms in Computer Science.
 
-### Things learned:
-* Learned how to make functionality for className "active" in navs and tabs
-* Sharpened React JSX and CSS Flexbox skills.
-* Learned how to combine two personal Solo Projects to make one dynamic project!
+### Key Learning Points:
+- In-depth understanding and implementation of Data Structures and Algorithms.
+- Sharpening problem-solving skills through algorithmic challenges.
+- Integrating theoretical knowledge with practical programming skills in Java.
 
-### Overall, a productive project which allowed for better understanding of Pop Up Modals.
+### A great project overall that allowed me to delve into the intricacies of Data Structures and Algorithms, fostering a deeper understanding of computer science concepts.
 
 ## Preview of work done:
-### Image of Pop-up-Bar displaying dynamic info and picures
+### Image of Algorithm Visualization
 ![image](https://github.com/tuskydev/EXAMPLE-README-SOLO/assets/52723004/de13c388-6a9c-4a6b-9e84-487e5552207c)
 
-### Image of the Pop-up-Bar's integrated and dynamic Carousel 
+### Image of Advanced Data Structure Implementation
 ![image](https://user-images.githubusercontent.com/52723004/93537444-7d4e3f00-f919-11ea-94d4-43ab6a3205a9.png)
 
-## KEY NOTES: ONLYADDIFYOUNEEDDISCLAIMERS!!!
-* The first Carousel was made with Bootstrap NPM 
-* The second Carousel was made with Alice-Carousel NPM in a `Class` Component 
-* The third Carousel was made with Alice-Carousel NPM in a `Function` Component 
+## Key Notes:
+* Code snippets and projects are solely for educational purposes.
+* Strict adherence to academic integrity policies.
 
-## Steps to recreate:
-
-### In console:
-`
-npm install semantic-ui-react semantic-ui-css
-`
-
-`
-npm i react-alice-carousel
-`
-
-### Add these lines to the App.js file:
+## Repository Setup
+1. Clone this repository to your local machine.
 ```
-import {
-  Checkbox,
-  Sidebar,
-} from 'semantic-ui-react';
-import AliceCarousel from 'react-alice-carousel';
-
-import 'semantic-ui-css/semantic.min.css';
-import 'react-alice-carousel/lib/alice-carousel.css';
+git clone https://github.com/tuskydev/GTx-CS1332x-I-II-III-IV.git
 ```
 
-### Choose any example code from the Docs here and adjust to the best fit.
-`
-https://react.semantic-ui.com/usage
-`
+2. Navigate to the repository.
+```
+cd GTx-CS1332x-I-II-III-IV
+```
 
-`
-https://www.npmjs.com/package/react-alice-carousel
-`
+3. Access specific course materials and projects.
+```
+cd CS 1332x I
+```
+
+## Steps to Access Courses
+### Enrollment
+
+1. Enroll in CS1332x I-IV on the edX platform.
+- Choose from the following courses:
+  - [CS 1332x I](https://www.edx.org/learn/data-structures/the-georgia-institute-of-technology-data-structures-algorithms-i-arraylists-linkedlists-stacks-and-queues)
+  - [CS 1332x II](https://www.edx.org/learn/data-structures/the-georgia-institute-of-technology-data-structures-algorithms-ii-binary-trees-heaps-skiplists-and-hashmaps)
+  - [CS 1332x III](https://www.edx.org/learn/data-structures/the-georgia-institute-of-technology-data-structures-algorithms-iii-avl-and-2-4-trees-divide-and-conquer-algorithms)
+  - [CS 1332x IV](https://www.edx.org/learn/data-structures/the-georgia-institute-of-technology-data-structures-algorithms-iv-pattern-matching-dijkstras-mst-and-dynamic-programming-algorithms)
