@@ -108,6 +108,20 @@ public class ArrayList<T> {
    */
   public T removeFromFront() {
     // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+    if (size == 0) {
+      throw new NoSuchElementException("Cannot remove from an empty list");
+    }
+
+    T removedItem = backingArray[0];
+
+    for (int i = 0; i < size - 1; i++) {
+      backingArray[i] = backingArray[i + 1];
+    }
+
+    size--;
+    backingArray[size] = null;
+
+    return removedItem;
   }
 
   /**
@@ -122,6 +136,15 @@ public class ArrayList<T> {
    */
   public T removeFromBack() {
     // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+    if (size == 0) {
+      throw new NoSuchElementException("Cannot remove from an empty list");
+    }
+
+    T removedItem = backingArray[size - 1];
+    backingArray[size - 1] = null;
+
+
+    return removedItem;
   }
 
   /**
