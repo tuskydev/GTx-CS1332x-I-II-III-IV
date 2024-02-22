@@ -9,8 +9,9 @@
 ### A great project overall that allowed me to delve into the intricacies of Data Structures and Algorithms, fostering a deeper understanding of computer science concepts.
 
 ## Preview of work done:
-### Image of Algorithm Visualization
-![image](https://github.com/tuskydev/EXAMPLE-README-SOLO/assets/52723004/de13c388-6a9c-4a6b-9e84-487e5552207c)
+### It starts off small, but by the end, it will have blossomed into a web of vastly different ideas and concepts!
+![image](https://github.com/tuskydev/GTx-CS1332x-I-II-III-IV/assets/52723004/93092733-eaed-42c4-878a-469edad01edb)
+
 
 ### Image of Advanced Data Structure Implementation
 ![image](https://user-images.githubusercontent.com/52723004/93537444-7d4e3f00-f919-11ea-94d4-43ab6a3205a9.png)
