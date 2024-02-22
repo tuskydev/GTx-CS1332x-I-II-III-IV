@@ -83,14 +83,15 @@ public class ArrayList<T> {
    */
   public void addToBack(T data) {
     // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
-    if (data == null) {
-      throw new IllegalArgumentException("Data cannot be null");
-    }
+    checkIfNull(data);
 
     // Resize if required
     if (size == backingArray.length) {
       resize();
     }
+
+    backingArray[size] = data;
+    size++;
   }
 
   /**
