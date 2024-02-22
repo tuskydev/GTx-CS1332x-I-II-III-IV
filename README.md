@@ -32,7 +32,11 @@ cd GTx-CS1332x-I-II-III-IV
 
 3. Access specific course materials and projects.
 ```
-cd CS 1332x I
+cd I
+cd II
+cd III
+cd IV
+
 ```
 
 ## Steps to Access Courses
