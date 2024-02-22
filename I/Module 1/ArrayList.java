@@ -18,6 +18,16 @@ public class ArrayList<T> {
   private T[] backingArray;
   private int size;
 
+  private void resize() {
+    // Make newBackingArray with doubled size
+    T[] newBackingArray = (T[]) new Object[2 * backingArray.length];
+
+    for (int i = 0; i < size; i++) {
+      newBackingArray[i] = backingArray[i];
+    }
+
+    backingArray = newBackingArray;
+  }
   /**
    * This is the constructor that constructs a new ArrayList.
    *
@@ -42,16 +52,21 @@ public class ArrayList<T> {
   public void addToFront(T data) {
     // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
     if (data == null) {
-      throw new java.lang.IllegalArgumentException();
-    } else {
-      size += 1;
-
-      // Make new backingArray with doubled size
-      if(size == INITIAL_CAPACITY) {
-        // size *= 2;
-      }
-
+      throw new IllegalArgumentException("Data cannot be null");
     }
+
+    // Resize if required
+    if (size == backingArray.length) {
+      resize();
+    }
+
+    for (int i = size - 1; i >= 0; i--) {
+      backingArray[i + 1] = backingArray[i];
+    }
+
+    // Set index 0 to our data
+    backingArray[0] = data;
+    size++;
   }
 
   /**
