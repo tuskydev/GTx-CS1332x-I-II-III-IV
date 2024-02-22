@@ -173,3 +173,17 @@ public class ArrayList<T> {
     return size;
   }
 }
+
+/**
+  FROM GRADER:
+
+  [Executed at: Thu Feb 22 13:38:42 PST 2024]
+
+  ============================================================
+  ArrayList.java successfully compiled.
+  ============================================================
+  Success: All Tests Passed.
+
+  Score: 10.0 / 10.0
+  ============================================================
+*/
