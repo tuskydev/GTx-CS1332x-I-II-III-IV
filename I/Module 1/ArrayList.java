@@ -142,7 +142,7 @@ public class ArrayList<T> {
 
     T removedItem = backingArray[size - 1];
     backingArray[size - 1] = null;
-
+    size--;
 
     return removedItem;
   }
