@@ -28,6 +28,12 @@ public class ArrayList<T> {
 
     backingArray = newBackingArray;
   }
+
+  private void checkIfNull(T data) {
+    if (data == null) {
+      throw new IllegalArgumentException("Data cannot be null");
+    }
+  }
   /**
    * This is the constructor that constructs a new ArrayList.
    *
@@ -51,9 +57,7 @@ public class ArrayList<T> {
    */
   public void addToFront(T data) {
     // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
-    if (data == null) {
-      throw new IllegalArgumentException("Data cannot be null");
-    }
+    checkIfNull(data);
 
     // Resize if required
     if (size == backingArray.length) {
@@ -79,6 +83,14 @@ public class ArrayList<T> {
    */
   public void addToBack(T data) {
     // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+    if (data == null) {
+      throw new IllegalArgumentException("Data cannot be null");
+    }
+
+    // Resize if required
+    if (size == backingArray.length) {
+      resize();
+    }
   }
 
   /**
