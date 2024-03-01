@@ -32,10 +32,12 @@ public class SinglyLinkedList<T> {
   public void addToFront(T data) {
     // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
     checkIfNull(data);
+
     SinglyLinkedListNode<T> newNode = new SinglyLinkedListNode<>(data);
     newNode.next = head;
     head = newNode;
 
+    // Edge case for size 0 list
     if (size == 0) {
       tail = newNode;
     }
@@ -53,6 +55,18 @@ public class SinglyLinkedList<T> {
    */
   public void addToBack(T data) {
     // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+    checkIfNull(data);
+
+    SinglyLinkedListNode<T> newNode = new SinglyLinkedListNode<>(data);
+    tail.next = newNode;
+    tail = newNode;
+
+    // Edge case for size 0 list
+    if (size == 0) {
+      head = newNode;
+    }
+
+    size++;
   }
 
   /**
