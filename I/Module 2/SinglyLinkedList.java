@@ -12,9 +12,16 @@ public class SinglyLinkedList<T> {
   private SinglyLinkedListNode<T> tail;
   private int size;
 
+  private void checkIfNull(T data) {
+    if (data == null) {
+      throw new IllegalArgumentException("Data cannot be null");
+    }
+  }
+
+  
   /*
     * Do not add a constructor.
-    */
+  */
 
   /**
    * Adds the element to the front of the list.
@@ -26,6 +33,9 @@ public class SinglyLinkedList<T> {
    */
   public void addToFront(T data) {
     // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+    
+
+    size++;
   }
 
   /**
@@ -63,6 +73,16 @@ public class SinglyLinkedList<T> {
   public T removeFromBack() {
     // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
   }
+
+
+
+
+
+
+
+
+
+
 
   /**
    * Returns the head node of the list.

@@ -1,3 +1,8 @@
 {
-  "java.project.sourcePaths": ["I/Module 1", "CS 1332x I", "I/moduleOne"]
+  "java.project.sourcePaths": [
+    "I/Module 2",
+    "I/Module 1",
+    "CS 1332x I",
+    "I/moduleOne"
+  ]
 }
