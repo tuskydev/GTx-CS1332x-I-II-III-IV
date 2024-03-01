@@ -79,6 +79,14 @@ public class SinglyLinkedList<T> {
    */
   public T removeFromFront() {
     // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+    if (size == 0) {
+      throw new NoSuchElementException("List is Empty");
+    }
+
+    T removedNode = head;
+    head.head.next;
+
+    size--;
   }
 
   /**
@@ -91,6 +99,9 @@ public class SinglyLinkedList<T> {
    */
   public T removeFromBack() {
     // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+    if (size == 0) {
+      throw new NoSuchElementException("List is Empty");
+    }
   }
 
 
