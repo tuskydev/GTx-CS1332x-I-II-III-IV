@@ -17,8 +17,6 @@ public class SinglyLinkedList<T> {
       throw new IllegalArgumentException("Data cannot be null");
     }
   }
-
-  
   /*
     * Do not add a constructor.
   */
@@ -33,7 +31,14 @@ public class SinglyLinkedList<T> {
    */
   public void addToFront(T data) {
     // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
-    
+    checkIfNull(data);
+    SinglyLinkedListNode<T> newNode = new SinglyLinkedListNode<>(data);
+    newNode.next = head;
+    head = newNode;
+
+    if (size == 0) {
+      tail = newNode;
+    }
 
     size++;
   }
