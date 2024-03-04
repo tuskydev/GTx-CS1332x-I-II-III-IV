@@ -111,25 +111,25 @@ public class SinglyLinkedList<T> {
     }
 
     if (size == 1) {
-      T removedNode = tail;
+      T removedData = tail.data;
       head = null;
       tail = null;
       size--;
 
-      return removedNode;
+      return removedData;
     }
 
-    T removedNode = tail;
-    T current = head;
+    T removedData = tail.data;
 
+    SinglyLinkedListNode<T> current = head;
     while (current.next.next != null) {
       current = current.next;
     }
-    current.next = null;
     tail = current;
+    tail.next = null;
     size--;
 
-    return removedNode;
+    return removedData;
   }
 
   /**
