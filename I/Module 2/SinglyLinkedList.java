@@ -171,3 +171,15 @@ public class SinglyLinkedList<T> {
     return size;
   }
 }
+
+/*
+[Executed at: Mon Mar 4 9:34:55 PST 2024]
+
+============================================================
+SinglyLinkedList.java successfully compiled.
+============================================================
+Success: All Tests Passed.
+
+Score: 10.0 / 10.0
+============================================================
+*/
