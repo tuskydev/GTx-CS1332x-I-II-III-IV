@@ -58,12 +58,14 @@ public class SinglyLinkedList<T> {
     checkIfNull(data);
 
     SinglyLinkedListNode<T> newNode = new SinglyLinkedListNode<>(data);
-    tail.next = newNode;
-    tail = newNode;
 
     // Edge case for size 0 list
     if (size == 0) {
       head = newNode;
+      tail = newNode;
+    } else {
+      tail.next = newNode;
+      tail = newNode;
     }
 
     size++;
@@ -83,11 +85,15 @@ public class SinglyLinkedList<T> {
       throw new NoSuchElementException("List is Empty");
     }
 
-    T removedNode = head;
+    T removedData = head.data;
     head = head.next;
     size--;
 
-    return removedNode;
+    if (size == 0) {
+      tail = null;
+    }
+
+    return removedData;
   }
 
   /**
@@ -125,16 +131,6 @@ public class SinglyLinkedList<T> {
 
     return removedNode;
   }
-
-
-
-
-
-
-
-
-
-
 
   /**
    * Returns the head node of the list.
