@@ -34,7 +34,7 @@ public class SinglyLinkedList<T> {
     checkIfNull(data);
 
     SinglyLinkedListNode<T> newNode = new SinglyLinkedListNode<>(data);
-    newNode.next = head;
+    newNode.setNext(head);
     head = newNode;
 
     // Edge case for size 0 list
@@ -64,7 +64,7 @@ public class SinglyLinkedList<T> {
       head = newNode;
       tail = newNode;
     } else {
-      tail.next = newNode;
+      tail.setNext(newNode);
       tail = newNode;
     }
 
@@ -85,8 +85,8 @@ public class SinglyLinkedList<T> {
       throw new NoSuchElementException("List is Empty");
     }
 
-    T removedData = head.data;
-    head = head.next;
+    T removedData = head.getData();
+    head = head.getNext();
     size--;
 
     if (size == 0) {
@@ -111,7 +111,7 @@ public class SinglyLinkedList<T> {
     }
 
     if (size == 1) {
-      T removedData = tail.data;
+      T removedData = tail.getData();
       head = null;
       tail = null;
       size--;
@@ -119,14 +119,14 @@ public class SinglyLinkedList<T> {
       return removedData;
     }
 
-    T removedData = tail.data;
-
     SinglyLinkedListNode<T> current = head;
-    while (current.next.next != null) {
-      current = current.next;
+    while (current.getNext().getNext() != null) {
+      current = current.getNext();
     }
+
+    T removedData = tail.getData();
     tail = current;
-    tail.next = null;
+    tail.setNext(null);
     size--;
 
     return removedData;
