@@ -85,7 +85,15 @@ public class ArrayQueue<T> {
    */
   public T dequeue() {
     // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+    if (size == 0) {
+      throw new NoSuchElementException("Queue is Empty.");
+    }
+    T saveCurrFront = backingArray[front];
+    backingArray[front] = null;
+    front = (front + 1) % backingArray.length;
+    size--;
 
+    return saveCurrFront;
   }
 
   /**
