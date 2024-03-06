@@ -31,7 +31,7 @@ public class ArrayList<T> {
    * Adds the data to the specified index.
    *
    * Must be O(1) for index size and O(n) for all other cases.
-   * 
+   *
    * ASSUMPTIONS:
    * - You may assume that the backingArray will not need to be resized.
    * - You may assume that the index is valid [0, size].
@@ -41,7 +41,15 @@ public class ArrayList<T> {
    * @param data  the data to add at the specified index
    */
   public void addAtIndex(int index, T data) {
-      // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+    // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+    // Reach destination and add data
+    for (int i = size - 1; i >= index; i--) {
+      // Shift values to the right
+      backingArray[i + 1] = backingArray[i];
+    }
+
+    backingArray[index] = data;
+    size++;
   }
 
   /**
