@@ -38,10 +38,14 @@ public class SinglyLinkedList<T> {
         newNode.setNext(head);
         head = newNode;
       }
-    } else if (index == size) {
+    }
+    // Adding to tail special case
+    else if (index == size) {
       tail.setNext(newNode);
       tail = newNode;
-    } else {
+    }
+    // Adding to middle of the list
+    else {
       SinglyLinkedListNode currNode = head;
       for (int i = 0; i < index - 1; i++) {
         currNode = currNode.getNext();
