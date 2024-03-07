@@ -30,31 +30,22 @@ public class SinglyLinkedList<T> {
     // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
     SinglyLinkedListNode<T> newNode = new SinglyLinkedListNode<>(data);
 
-    // If index is empty
+    // List is empty
     if (index == 0) {
-      newNode.setNext(head);
-      head = newNode;
-
-      if (tail == null) {
-        tail = newNode;
-      }
-    }
-    // Adding to the back
-    else if (index == size) {
-      if (tail != null) {
-        tail.setNext(newNode);
+      if (size == 0) {
+        head = tail = newNode;
       } else {
+        newNode.setNext(head);
         head = newNode;
       }
+    } else if (index == size) {
+      tail.setNext(newNode);
       tail = newNode;
-    }
-    // Adding elsewhere
-    else {
+    } else {
       SinglyLinkedListNode currNode = head;
       for (int i = 0; i < index - 1; i++) {
         currNode = currNode.getNext();
       }
-
       newNode.setNext(currNode.getNext());
       currNode.setNext(newNode);
     }
@@ -101,3 +92,15 @@ public class SinglyLinkedList<T> {
       return size;
   }
 }
+
+/*
+[Executed at: Thu Mar 7 10:36:52 PST 2024]
+
+============================================================
+SinglyLinkedList.java successfully compiled.
+============================================================
+Success: All Tests Passed.
+
+Score: 10.0 / 10.0
+============================================================
+*/
