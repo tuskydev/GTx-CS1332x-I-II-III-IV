@@ -30,6 +30,7 @@ public class SinglyLinkedList<T> {
     // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
     SinglyLinkedListNode<T> newNode = new SinglyLinkedListNode<>(data);
 
+    // Edge/normal cases are commented
     // List is empty
     if (index == 0) {
       if (size == 0) {
