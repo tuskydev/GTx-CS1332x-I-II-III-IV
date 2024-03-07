@@ -19,7 +19,7 @@ public class ArrayQueue<T> {
 
   /**
    * This is the constructor that constructs a new ArrayQueue.
-   * 
+   *
    * Recall that Java does not allow for regular generic array creation,
    * so instead we cast an Object[] to a T[] to get the generic typing.
    */
@@ -46,7 +46,13 @@ public class ArrayQueue<T> {
    * @return the data formerly located at the front of the queue
    */
   public T dequeue() {
-      // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+    // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+    T frontElement = backingArray[front];
+    backingArray[front] = null;
+    front = (front + 1) % backingArray.length;
+    size--;
+
+    return frontElement;
   }
 
   /**
