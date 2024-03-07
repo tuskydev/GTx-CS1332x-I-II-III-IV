@@ -81,3 +81,15 @@ public class ArrayQueue<T> {
       return size;
   }
 }
+
+/*
+[Executed at: Wed Mar 6 20:25:14 PST 2024]
+
+============================================================
+ArrayQueue.java successfully compiled.
+============================================================
+Success: All Tests Passed.
+
+Score: 10.0 / 10.0
+============================================================
+*/
