@@ -19,7 +19,7 @@ public class ArrayQueue<T> {
 
   /**
    * This is the constructor that constructs a new ArrayQueue.
-   * 
+   *
    * Recall that Java does not allow for regular generic array creation,
    * so instead we cast an Object[] to a T[] to get the generic typing.
    */
@@ -32,7 +32,7 @@ public class ArrayQueue<T> {
    * Adds the data to the back of the queue.
    *
    * Method should run in O(1) time.
-   * 
+   *
    * ASSUMPTIONS:
    * - You may assume that the backingArray does not need to be resized.
    * - You may assume that the data is not null.
@@ -40,7 +40,9 @@ public class ArrayQueue<T> {
    * @param data the data to add to the back of the queue
    */
   public void enqueue(T data) {
-      // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+    // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+    backingArray[(size + front) % backingArray.length] = data;
+    size++;
   }
 
   /**
