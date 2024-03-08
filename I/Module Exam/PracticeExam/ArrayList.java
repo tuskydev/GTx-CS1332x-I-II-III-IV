@@ -28,18 +28,28 @@ public class ArrayList<T> {
   }
 
   /**
-   * Adds the data the front of the list.
+   * Adds the data to the specified index.
    *
-   * Method should run in O(n) time.
-   * 
+   * Must be O(1) for index size and O(n) for all other cases.
+   *
    * ASSUMPTIONS:
    * - You may assume that the backingArray will not need to be resized.
+   * - You may assume that the index is valid [0, size].
    * - You may assume that the data will never be null.
-   * 
+   *
+   * @param index the index at which to add the new data
    * @param data  the data to add at the specified index
    */
-  public void addToFront(T data) {
-      // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+  public void addAtIndex(int index, T data) {
+    // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+    // Reach destination and add data
+    for (int i = size - 1; i >= index; i--) {
+      // Shift values to the right
+      backingArray[i + 1] = backingArray[i];
+    }
+
+    backingArray[index] = data;
+    size++;
   }
 
   /**
@@ -68,3 +78,15 @@ public class ArrayList<T> {
       return size;
   }
 }
+
+/*
+[Executed at: Wed Mar 6 7:55:50 PST 2024]
+
+============================================================
+ArrayList.java successfully compiled.
+============================================================
+Success: All Tests Passed.
+
+Score: 10.0 / 10.0
+============================================================
+*/
