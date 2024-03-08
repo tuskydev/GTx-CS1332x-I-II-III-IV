@@ -18,7 +18,7 @@ public class ArrayList<T> {
 
   /**
    * This is the constructor that constructs a new ArrayList.
-   * 
+   *
    * Recall that Java does not allow for regular generic array creation,
    * so instead we cast an Object[] to a T[] to get the generic typing.
    */
@@ -31,15 +31,21 @@ public class ArrayList<T> {
    * Adds the data the front of the list.
    *
    * Method should run in O(n) time.
-   * 
+   *
    * ASSUMPTIONS:
    * - You may assume that the backingArray will not need to be resized.
    * - You may assume that the data will never be null.
-   * 
+   *
    * @param data  the data to add at the specified index
    */
   public void addToFront(T data) {
-      // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+    // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+    for (int i = size - 1; i >= 0; i--) {
+      backingArray[i + 1] = backingArray[i];
+    }
+
+    backingArray[0] = data;
+    size++;
   }
 
   /**
