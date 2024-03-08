@@ -18,14 +18,26 @@ public class SinglyLinkedList<T> {
    * Adds the element to the back of the list.
    *
    * Method should run in O(1) time.
-   * 
+   *
    * ASSUMPTIONS:
    * - You may assume that the data is not null.
    *
    * @param data the data to add to the back of the list
    */
   public void addToBack(T data) {
-      // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+    // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+    SinglyLinkedListNode<T> newNode = new SinglyLinkedListNode<>(data);
+
+
+    if (size == 0) {
+      head = newNode;
+      tail = newNode;
+    } else {
+      tail.setNext(newNode);
+      tail = newNode;
+    }
+
+    size ++;
   }
 
   /**
