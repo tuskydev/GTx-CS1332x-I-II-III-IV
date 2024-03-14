@@ -37,7 +37,6 @@ cd I
 cd II
 cd III
 cd IV
-
 ```
 
 ## Steps to Access Courses
