@@ -81,7 +81,17 @@ public class Traversals<T extends Comparable<? super T>> {
      * @param root The root of a BST.
      * @return List containing the post-order traversal of the tree.
      */
+    private void postorderHelper(TreeNode<T> node, List<T> list) {
+        if (node != null) {
+            postorderHelper(node.getLeft(), list);
+            postorderHelper(node.getRight(), list);
+            list.add(node.getData());
+        }
+    }
     public List<T> postorder(TreeNode<T> root) {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        List<T> list = new ArrayList<>();
+        postorderHelper(root, list);
+        return list;
     }
 }
