@@ -95,3 +95,15 @@ public class Traversals<T extends Comparable<? super T>> {
         return list;
     }
 }
+
+/*
+[Executed at: Fri Mar 15 9:16:49 PDT 2024]
+
+============================================================
+Traversals.java successfully compiled.
+============================================================
+Success: All Tests Passed.
+
+Score: 10.0 / 10.0
+============================================================
+*/
