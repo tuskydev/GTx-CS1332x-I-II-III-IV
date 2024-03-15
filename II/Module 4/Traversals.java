@@ -25,8 +25,19 @@ public class Traversals<T extends Comparable<? super T>> {
      * @param root The root of a BST.
      * @return List containing the pre-order traversal of the tree.
      */
+    private void preorderHelper(TreeNode<T> node, List<T> list) {
+        if (node != null) {
+            list.add(node.getData());
+            preorderHelper(node.getLeft(), list);
+            preorderHelper(node.getRight(), list);
+        }
+    }
+
     public List<T> preorder(TreeNode<T> root) {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        List<T> list = new ArrayList<>();
+        preorderHelper(root, list);
+        return list;
     }
 
     /**
