@@ -1,12 +1,12 @@
 import java.util.NoSuchElementException;
 
 /**
- * Your implementation of an ArrayList.
+ * Your implementation of an .
  */
-public class ArrayList<T> {
+public class <T> {
 
   /*
-    * The initial capacity of the ArrayList.
+    * The initial capacity of the .
     *
     * DO NOT MODIFY THIS VARIABLE!
     */
@@ -35,12 +35,12 @@ public class ArrayList<T> {
     }
   }
   /**
-   * This is the constructor that constructs a new ArrayList.
+   * This is the constructor that constructs a new .
    *
    * Recall that Java does not allow for regular generic array creation,
    * so instead we cast an Object[] to a T[] to get the generic typing.
    */
-  public ArrayList() {
+  public () {
     //DO NOT MODIFY THIS METHOD!
     backingArray = (T[]) new Object[INITIAL_CAPACITY];
   }
@@ -180,7 +180,7 @@ public class ArrayList<T> {
   [Executed at: Thu Feb 22 13:38:42 PST 2024]
 
   ============================================================
-  ArrayList.java successfully compiled.
+  .java successfully compiled.
   ============================================================
   Success: All Tests Passed.
 
