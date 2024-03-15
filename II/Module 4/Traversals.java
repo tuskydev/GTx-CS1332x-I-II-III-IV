@@ -53,8 +53,19 @@ public class Traversals<T extends Comparable<? super T>> {
      * @param root The root of a BST.
      * @return List containing the in-order traversal of the tree.
      */
+    private void inorderHelper(TreeNode<T> node, List<T> list) {
+        if (node != null) {
+            inorderHelper(node.getLeft(), list);
+            list.add(node.getData());
+            inorderHelper(node.getRight(), list);
+        }
+    }
+
     public List<T> inorder(TreeNode<T> root) {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        List<T> list = new ArrayList<>();
+        inorderHelper(root, list);
+        return list;
     }
 
     /**
