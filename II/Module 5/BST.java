@@ -33,12 +33,12 @@ public class BST<T extends Comparable<? super T>> {
      * @throws java.lang.IllegalArgumentException If data is null.
      */
     public void add(T data) {
-        // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
-        if (data == null) {
-          throw new IllegalArgumentException("Data cannot be null!");
-        }
+      // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+      if (data == null) {
+        throw new IllegalArgumentException("Data cannot be null!");
+      }
 
-        root = addHelper(root, data);
+      root = addHelper(root, data);
     }
 
     private BSTNode<T> addHelper(BSTNode<T> curr, T data) {
@@ -90,7 +90,7 @@ public class BST<T extends Comparable<? super T>> {
      * @throws java.util.NoSuchElementException   If the data is not in the tree.
      */
     public T remove(T data) {
-        // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+      // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
 
     }
 
