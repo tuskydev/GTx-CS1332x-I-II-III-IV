@@ -38,21 +38,26 @@ public class BST<T extends Comparable<? super T>> {
           throw new IllegalArgumentException("Data cannot be null!");
         }
 
-        root = helperAdd(root, data);
+        root = addHelper(root, data);
     }
 
-    private BSTNode<T> helperAdd(BSTNode<T> curr, T data) {
-      if (curr.getData() == null) {
+    private BSTNode<T> addHelper(BSTNode<T> curr, T data) {
+      if (curr == null) {
         size++;
-        BSTNode<T> newNode = new BSTNode<>(data);
-        return newNode;
+        return new BSTNode<>(data);
       }
-      else if (data.compareTo(curr.getData()) < 1) {
-        curr.setLeft(helperAdd(curr, data));
+      else if (data.compareTo(curr.getData()) == 0) {
+        // Data is same
         return curr;
       }
-      else if (data.compareTo(curr.getData()) > 1) {
-        curr.setRight(helperAdd(curr, data));;
+      else if (data.compareTo(curr.getData()) < 0) {
+        // Data is smaller
+        curr.setLeft(addHelper(curr.getLeft(), data));
+        return curr;
+      }
+      else if (data.compareTo(curr.getData()) > 0) {
+        // Data is bigger
+        curr.setRight(addHelper(curr.getRight(), data));
         return curr;
       }
 
