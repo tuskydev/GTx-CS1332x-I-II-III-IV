@@ -91,7 +91,22 @@ public class BST<T extends Comparable<? super T>> {
      */
     public T remove(T data) {
       // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+      BSTNode<T> dummy = new BSTNode<>(null);
+      root = removeHelper(root, data, dummy);
 
+      return dummy.getData();
+    }
+
+    private BSTNode<T> removeHelper(BSTNode<T> curr, T data, BSTNode<T> dummy) {
+
+    }
+
+    private BSTNode<T> findSuccessor(BSTNode<T> curr) {
+      while (curr.getRight() != null) {
+        findSuccessor(curr.getRight());
+      }
+
+      return curr;
     }
 
     /**
