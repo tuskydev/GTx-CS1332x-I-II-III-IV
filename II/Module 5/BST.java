@@ -53,12 +53,10 @@ public class BST<T extends Comparable<? super T>> {
       else if (data.compareTo(curr.getData()) < 0) {
         // Data is smaller
         curr.setLeft(addHelper(curr.getLeft(), data));
-        return curr;
       }
       else if (data.compareTo(curr.getData()) > 0) {
         // Data is bigger
         curr.setRight(addHelper(curr.getRight(), data));
-        return curr;
       }
 
       return curr;
