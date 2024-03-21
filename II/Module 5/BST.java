@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 /**
@@ -33,6 +34,27 @@ public class BST<T extends Comparable<? super T>> {
      */
     public void add(T data) {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        if (data == null) {
+          throw new IllegalArgumentException("Data cannot be null!");
+        }
+
+
+    }
+
+    private BSTNode<T> helperAdd(BSTNode<T> curr, T data) {
+      if (curr.getData() == null) {
+        size++;
+        BSTNode<T> newNode = new BSTNode<>(data);
+        return newNode;
+      }
+      else if (data < curr.getLeft()) {
+        helperAdd(curr, data);
+      }
+      else if (data > curr.getRight()) {
+        helperAdd(curr, data);
+      }
+
+      return curr;
     }
 
     /**
@@ -64,6 +86,7 @@ public class BST<T extends Comparable<? super T>> {
      */
     public T remove(T data) {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+
     }
 
     /**
