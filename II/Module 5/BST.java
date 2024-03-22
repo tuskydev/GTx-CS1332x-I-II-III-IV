@@ -91,6 +91,10 @@ public class BST<T extends Comparable<? super T>> {
      */
     public T remove(T data) {
       // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+      if (data == null) {
+        throw new IllegalArgumentException("Data cannot be null!");
+      }
+
       BSTNode<T> dummy = new BSTNode<>(null);
       root = removeHelper(root, data, dummy);
 
@@ -98,12 +102,51 @@ public class BST<T extends Comparable<? super T>> {
     }
 
     private BSTNode<T> removeHelper(BSTNode<T> curr, T data, BSTNode<T> dummy) {
+      if (curr == null) {
+        // Data not found
+        throw new NoSuchElementException("Error: data not found");
+      }
+      else if (data.compareTo(curr.getData()) < 0) {
+        curr.setLeft(removeHelper(curr.getLeft(), data, dummy));
+      }
+      else if (data.compareTo(curr.getData()) > 0) {
+        curr.setRight(removeHelper(curr.getRight(), data, dummy));
+      }
+      else {
+        // Data found
+        dummy.setData(curr.getData());
+        size--;
 
+        // 0 Children
+        if (curr.getLeft() == null & curr.getRight() == null) {
+          return null;
+        }
+
+        // 1 Children
+        else if (curr.getLeft() != null & curr.getRight() == null) {
+          return curr.getLeft();
+        }
+        else if (curr.getLeft() == null & curr.getRight() != null) {
+          return curr.getRight();
+        }
+
+        // 2 Children
+        else {
+          BSTNode<T> dummyTwo = new BSTNode<>(null);
+          curr.setRight(findSuccessor(curr.getRight(), dummyTwo));
+          curr.setData(dummyTwo.getData());
+        }
+      }
+
+      return curr;
     }
 
-    private BSTNode<T> findSuccessor(BSTNode<T> curr) {
-      while (curr.getRight() != null) {
-        findSuccessor(curr.getRight());
+    private BSTNode<T> findSuccessor(BSTNode<T> curr, BSTNode<T> dummyTwo) {
+      if (curr.getLeft() == null) {
+        dummyTwo.setData(curr.getData());
+        return curr.getRight();
+      } else {
+        curr.setLeft(findSuccessor(curr.getLeft(), dummyTwo));
       }
 
       return curr;
