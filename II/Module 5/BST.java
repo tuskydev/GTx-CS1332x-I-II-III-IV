@@ -178,3 +178,15 @@ public class BST<T extends Comparable<? super T>> {
         return size;
     }
 }
+
+/*
+[Executed at: Fri Mar 22 8:35:53 PDT 2024]
+
+============================================================
+BST.java successfully compiled.
+============================================================
+Success: All Tests Passed.
+
+Score: 10.0 / 10.0
+============================================================
+*/
