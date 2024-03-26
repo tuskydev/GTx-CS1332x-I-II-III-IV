@@ -18,6 +18,16 @@ public class MinHeap<T extends Comparable<? super T>> {
   private T[] backingArray;
   private int size;
 
+  private void doubleBackingArray() {
+    T[] newBackingArray = (T[]) new Comparable[backingArray.length * 2];
+
+    for (int i = 0; i < size; i++) {
+      newBackingArray[i] = backingArray[i];
+    }
+
+    backingArray = newBackingArray;
+  }
+
   /**
    * This is the constructor that constructs a new MinHeap.
    *
