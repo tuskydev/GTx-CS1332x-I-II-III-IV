@@ -81,9 +81,8 @@ public class MinHeap<T extends Comparable<? super T>> {
       // Not enough space
       resizeBackingArray();
       backingArray[size] = data;
-
+      upHeap(size);
     }
-
   }
 
   /**
