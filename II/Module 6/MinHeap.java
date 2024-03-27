@@ -34,6 +34,19 @@ public class MinHeap<T extends Comparable<? super T>> {
     backingArray = newBackingArray;
   }
 
+  private void upHeap(int index) {
+    int parentIndex = index / 2;
+
+    if (backingArray[parentIndex].compareTo(backingArray[index]) > 0) {
+      // Swap them
+      T dummyValue = backingArray[parentIndex];
+      backingArray[parentIndex] = backingArray[index];
+      backingArray[index] = dummyValue;
+
+      upHeap(parentIndex);
+    }
+  }
+
   /**
    * This is the constructor that constructs a new MinHeap.
    *
@@ -61,7 +74,7 @@ public class MinHeap<T extends Comparable<? super T>> {
     // Add the data to the array
     if (size <= backingArray.length) {
       backingArray[size] = data;
-
+      upHeap(size);
 
 
     } else {
