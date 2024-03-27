@@ -53,11 +53,22 @@ public class MinHeap<T extends Comparable<? super T>> {
     int leftChild = backingArray[index].compareTo(backingArray[2 * index]);
     int rightChild = backingArray[index].compareTo(backingArray[2 * index + 1]);
 
-    if (leftChild > rightChild) {
-      // Swap them
-      T dummyValue = backingArray[parentIndex];
-      backingArray[parentIndex] = backingArray[index];
-      backingArray[index] = dummyValue;
+    if (leftChild > 0 || rightChild > 0) {
+      if (leftChild < rightChild) {
+        // Swap with left-child node
+        T dummyValue = backingArray[index];
+        backingArray[index] = backingArray[2 * index];
+        backingArray[2 * index] = dummyValue;
+
+        downHeap(2 * index);
+      } else if (leftChild > rightChild) {
+        // Swap with right-child node
+        T dummyValue = backingArray[index];
+        backingArray[index] = backingArray[2 * index + 1];
+        backingArray[2 * index + 1] = dummyValue;
+
+        downHeap(2 * index + 1);
+      }
     }
   }
 
