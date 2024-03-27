@@ -25,13 +25,15 @@ public class MinHeap<T extends Comparable<? super T>> {
   }
 
   private void resizeBackingArray() {
-    T[] newBackingArray = (T[]) new Comparable[backingArray.length * 2];
+    if (size >= backingArray.length - 1) {
+      T[] newBackingArray = (T[]) new Comparable[backingArray.length * 2];
 
-    for (int i = 0; i < size; i++) {
-      newBackingArray[i] = backingArray[i];
+      for (int i = 0; i < size; i++) {
+        newBackingArray[i] = backingArray[i];
+      }
+
+      backingArray = newBackingArray;
     }
-
-    backingArray = newBackingArray;
   }
 
   private void upHeap(int index) {
@@ -69,20 +71,11 @@ public class MinHeap<T extends Comparable<? super T>> {
    */
   public void add(T data) {
     checkIfNull(data);
-    size++;
+    resizeBackingArray();
 
     // Add the data to the array
-    if (size <= backingArray.length) {
-      backingArray[size] = data;
+      backingArray[++size] = data;
       upHeap(size);
-
-
-    } else {
-      // Not enough space
-      resizeBackingArray();
-      backingArray[size] = data;
-      upHeap(size);
-    }
   }
 
   /**
@@ -97,6 +90,7 @@ public class MinHeap<T extends Comparable<? super T>> {
    */
   public T remove() {
     // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+    return backingArray[-1];
   }
 
   /**
