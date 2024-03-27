@@ -28,7 +28,7 @@ public class MinHeap<T extends Comparable<? super T>> {
     if (size >= backingArray.length - 1) {
       T[] newBackingArray = (T[]) new Comparable[backingArray.length * 2];
 
-      for (int i = 0; i < size; i++) {
+      for (int i = 1; i <= size; i++) {
         newBackingArray[i] = backingArray[i];
       }
 
@@ -50,26 +50,24 @@ public class MinHeap<T extends Comparable<? super T>> {
   }
 
   private void downHeap(int index) {
-    int leftChild = backingArray[index].compareTo(backingArray[2 * index]);
-    int rightChild = backingArray[index].compareTo(backingArray[2 * index + 1]);
+    int currentSmallest = index;
 
-    if (leftChild > 0 || rightChild > 0) {
-      // The SMALLER child has a BIGGER number
-      if (leftChild > rightChild) {
-        // Swap with left-child node
-        T dummyValue = backingArray[index];
-        backingArray[index] = backingArray[2 * index];
-        backingArray[2 * index] = dummyValue;
+    if (2 * index <= size && backingArray[2 * index].compareTo(backingArray[currentSmallest]) < 0) {
+      currentSmallest = 2 * index;
+    }
 
-        downHeap(2 * index);
-      } else {
-        // Swap with right-child node
-        T dummyValue = backingArray[index];
-        backingArray[index] = backingArray[2 * index + 1];
-        backingArray[2 * index + 1] = dummyValue;
+    if (2 * index + 1 <= size && backingArray[2 * index + 1].compareTo(backingArray[currentSmallest]) < 0) {
+      currentSmallest = 2 * index + 1;
+    }
 
-        downHeap(2 * index + 1);
-      }
+    if (currentSmallest != index) {
+      // Swap value with the smallest
+      T dummyValue = backingArray[index];
+      backingArray[index] = backingArray[currentSmallest];
+      backingArray[currentSmallest] = dummyValue;
+
+      // Heapify!!!
+      downHeap(currentSmallest);
     }
   }
 
