@@ -49,6 +49,18 @@ public class MinHeap<T extends Comparable<? super T>> {
     }
   }
 
+  private void downHeap(int index) {
+    int leftChild = backingArray[index].compareTo(backingArray[2 * index]);
+    int rightChild = backingArray[index].compareTo(backingArray[2 * index + 1]);
+
+    if (leftChild > rightChild) {
+      // Swap them
+      T dummyValue = backingArray[parentIndex];
+      backingArray[parentIndex] = backingArray[index];
+      backingArray[index] = dummyValue;
+    }
+  }
+
   /**
    * This is the constructor that constructs a new MinHeap.
    *
@@ -89,8 +101,18 @@ public class MinHeap<T extends Comparable<? super T>> {
    * @throws java.util.NoSuchElementException If the heap is empty.
    */
   public T remove() {
-    // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
-    return backingArray[-1];
+    // Save the removed item
+    T dummyRemovedItem = backingArray[1];
+
+    // Replace it with the last index item
+    backingArray[1] = backingArray[size];
+    backingArray[size] = null;
+    size--;
+
+    // Down-Heapify!
+    downHeap(1);
+
+    return dummyRemovedItem;
   }
 
   /**
