@@ -18,7 +18,13 @@ public class MinHeap<T extends Comparable<? super T>> {
   private T[] backingArray;
   private int size;
 
-  private void doubleBackingArray() {
+  private void checkIfNull(T data) {
+    if (data == null) {
+      throw new IllegalArgumentException("Data cannot be null!");
+    }
+  }
+
+  private void resizeBackingArray() {
     T[] newBackingArray = (T[]) new Comparable[backingArray.length * 2];
 
     for (int i = 0; i < size; i++) {
@@ -49,7 +55,22 @@ public class MinHeap<T extends Comparable<? super T>> {
    * @throws java.lang.IllegalArgumentException If the data is null.
    */
   public void add(T data) {
-    // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+    checkIfNull(data);
+    size++;
+
+    // Add the data to the array
+    if (size <= backingArray.length) {
+      backingArray[size] = data;
+
+
+
+    } else {
+      // Not enough space
+      resizeBackingArray();
+      backingArray[size] = data;
+
+    }
+
   }
 
   /**
