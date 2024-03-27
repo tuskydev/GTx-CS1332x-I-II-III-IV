@@ -54,14 +54,15 @@ public class MinHeap<T extends Comparable<? super T>> {
     int rightChild = backingArray[index].compareTo(backingArray[2 * index + 1]);
 
     if (leftChild > 0 || rightChild > 0) {
-      if (leftChild < rightChild) {
+      // The SMALLER child has a BIGGER number
+      if (leftChild > rightChild) {
         // Swap with left-child node
         T dummyValue = backingArray[index];
         backingArray[index] = backingArray[2 * index];
         backingArray[2 * index] = dummyValue;
 
         downHeap(2 * index);
-      } else if (leftChild > rightChild) {
+      } else {
         // Swap with right-child node
         T dummyValue = backingArray[index];
         backingArray[index] = backingArray[2 * index + 1];
@@ -112,13 +113,17 @@ public class MinHeap<T extends Comparable<? super T>> {
    * @throws java.util.NoSuchElementException If the heap is empty.
    */
   public T remove() {
+    // Heap is empty
+    if (size == 0) {
+      throw new NoSuchElementException("Heap is empty, cannot delete.");
+    }
+
     // Save the removed item
     T dummyRemovedItem = backingArray[1];
 
     // Replace it with the last index item
     backingArray[1] = backingArray[size];
-    backingArray[size] = null;
-    size--;
+    backingArray[size--] = null;
 
     // Down-Heapify!
     downHeap(1);
