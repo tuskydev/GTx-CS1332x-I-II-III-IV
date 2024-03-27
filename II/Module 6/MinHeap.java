@@ -37,15 +37,17 @@ public class MinHeap<T extends Comparable<? super T>> {
   }
 
   private void upHeap(int index) {
-    int parentIndex = index / 2;
+    if (index > 1) {
+      int parentIndex = index / 2;
 
-    if (backingArray[parentIndex].compareTo(backingArray[index]) > 0) {
-      // Swap them
-      T dummyValue = backingArray[parentIndex];
-      backingArray[parentIndex] = backingArray[index];
-      backingArray[index] = dummyValue;
+      if (backingArray[parentIndex].compareTo(backingArray[index]) > 0) {
+        // Swap them
+        T dummyValue = backingArray[parentIndex];
+        backingArray[parentIndex] = backingArray[index];
+        backingArray[index] = dummyValue;
 
-      upHeap(parentIndex);
+        upHeap(parentIndex);
+      }
     }
   }
 
