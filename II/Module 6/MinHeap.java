@@ -157,3 +157,15 @@ public class MinHeap<T extends Comparable<? super T>> {
     return size;
   }
 }
+
+/*
+[Executed at: Wed Mar 27 19:09:42 PDT 2024]
+
+============================================================
+MinHeap.java successfully compiled.
+============================================================
+Success: All Tests Passed.
+
+Score: 10.0 / 10.0
+============================================================
+*/
