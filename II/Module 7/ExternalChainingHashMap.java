@@ -26,6 +26,12 @@ public class ExternalChainingHashMap<K, V> {
   private ExternalChainingMapEntry<K, V>[] table;
   private int size;
 
+  private void checkForNull(K key, V value) {
+    if (key == null || value == null) {
+      throw new IllegalArgumentException("Data cannot be null!");
+    }
+  }
+
   /**
    * Constructs a new ExternalChainingHashMap with an initial capacity of INITIAL_CAPACITY.
    */
@@ -70,7 +76,10 @@ public class ExternalChainingHashMap<K, V> {
    * @throws java.lang.IllegalArgumentException If key or value is null.
    */
   public V put(K key, V value) {
-    // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+    resizeBackingTable(2 * table.length);
+
+    int k = key.hashCode();
+    k = k % table.length;
   }
 
   /**
@@ -101,9 +110,20 @@ public class ExternalChainingHashMap<K, V> {
    * Hint: You cannot just simply copy the entries over to the new table.
    *
    * @param Length The new length of the backing table.
-   */
+   */ 
   private void resizeBackingTable(int length) {
-    // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+    double futureLoadFactor = (size + 1) / table.length;
+
+    if (futureLoadFactor > MAX_LOAD_FACTOR) {
+      // Resize
+      ExternalChainingMapEntry<K, V>[] newTable = (ExternalChainingMapEntry<K, V>[]) new ExternalChainingMapEntry[length];
+
+      for (int i = 0; i < table.length; i++) {
+        newTable[i] = table[i];
+      }
+
+      table = newTable;
+    }
   }
 
   /**
