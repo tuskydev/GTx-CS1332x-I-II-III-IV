@@ -120,12 +120,11 @@ public class ExternalChainingHashMap<K, V> {
       ExternalChainingMapEntry<K, V>[] newTable = (ExternalChainingMapEntry<K, V>[]) new ExternalChainingMapEntry[length];
 
       for (int i = 0; i < table.length; i++) {
-        // Rehash
-        int newHash = table[i].getKey().hashCode() % newTable.length;
-        newTable[newHash] = table[i];
+        ExternalChainingMapEntry<K, V> current = table[i];
 
-        ExternalChainingMapEntry<K, V> current = newTable[i];
-        while (current.getNext() != null) {
+        while (current != null) {
+          // Rehash
+          int newHash = current.getKey().hashCode() % newTable.length;
           newTable[newHash] = current;
           current = current.getNext();
         }
