@@ -76,7 +76,8 @@ public class ExternalChainingHashMap<K, V> {
    * @throws java.lang.IllegalArgumentException If key or value is null.
    */
   public V put(K key, V value) {
-    resizeBackingTable(2 * table.length);
+    checkForNull(key, value);
+    resizeBackingTable((2 * table.length) + 1);
 
     int k = key.hashCode();
     k = k % table.length;
@@ -110,7 +111,7 @@ public class ExternalChainingHashMap<K, V> {
    * Hint: You cannot just simply copy the entries over to the new table.
    *
    * @param Length The new length of the backing table.
-   */ 
+   */
   private void resizeBackingTable(int length) {
     double futureLoadFactor = (size + 1) / table.length;
 
@@ -119,7 +120,15 @@ public class ExternalChainingHashMap<K, V> {
       ExternalChainingMapEntry<K, V>[] newTable = (ExternalChainingMapEntry<K, V>[]) new ExternalChainingMapEntry[length];
 
       for (int i = 0; i < table.length; i++) {
-        newTable[i] = table[i];
+        // Rehash
+        int newHash = table[i].getKey().hashCode() % newTable.length;
+        newTable[newHash] = table[i];
+
+        ExternalChainingMapEntry<K, V> current = newTable[i];
+        while (current.getNext() != null) {
+          newTable[newHash] = current;
+          current = current.getNext();
+        }
       }
 
       table = newTable;
