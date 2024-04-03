@@ -122,7 +122,7 @@ public class ExternalChainingHashMap<K, V> {
     int hash = Math.abs(key.hashCode() % table.length);
 
     // 0 elements
-    if (table[hash].equals(null)) {
+    if (table[hash] == null) {
       throw new NoSuchElementException("Key not found!");
     }
 
@@ -130,8 +130,9 @@ public class ExternalChainingHashMap<K, V> {
 
     // 1 element
     if (current.getKey().equals(key)) {
-      if (current.getNext().equals(null)) {
+      if (current.getNext() == null) {
         table[hash] = null;
+        --size;
         return current.getValue();
       }
 
@@ -139,23 +140,23 @@ public class ExternalChainingHashMap<K, V> {
       return current.getValue();
     }
 
-    ExternalChainingMapEntry<K, V> returningValue = new ExternalChainingMapEntry(null, null);
-
     // 2+ elements
     while (current.getNext() != null) {
-      if (current.getNext().equals(key)) {
+      if (current.getNext().getKey().equals(key)) {
         // Found it
-        returningValue.setValue(current.getNext().getValue());
+        V returningValue = current.getNext().getValue();
 
         // Jump the found value in Linked List
         current.setNext(current.getNext().getNext());
+
+        --size;
+        return returningValue;
       }
 
       current = current.getNext();
     }
 
-    --size;
-    return returningValue.getValue();
+    throw new NoSuchElementException("Key not found!");
   }
 
 
