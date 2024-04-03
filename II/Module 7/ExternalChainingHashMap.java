@@ -118,6 +118,32 @@ public class ExternalChainingHashMap<K, V> {
     if (key == null) {
       throw new IllegalArgumentException("Data cannot be null!");
     }
+
+    int hash = Math.abs(key.hashCode() % table.length);
+    ExternalChainingMapEntry<K, V> current = table[hash];
+
+    if (current != null) {
+      if (current.equals(key)) {
+        V removedValue = current.getValue();
+        table[hash] = current.getNext();
+        current.setNext(null);
+
+        return removedValue;
+      }
+
+      // Search for key otherwise
+      else if (current != null) {
+        while (current.getNext() != null) {
+          if (current.equals(key)) {
+
+          }
+
+          current = current.getNext();
+        }
+      }
+    } else {
+      throw new NoSuchElementException("Key not found!");
+    }
   }
 
   /**
