@@ -123,10 +123,19 @@ public class ExternalChainingHashMap<K, V> {
         ExternalChainingMapEntry<K, V> current = table[i];
 
         while (current != null) {
+          ExternalChainingMapEntry<K, V> nextEntry = current.getNext();
+          current.setNext(null);
+
           // Rehash
-          int newHash = current.getKey().hashCode() % newTable.length;
+          int newHash = Math.abs(current.getKey().hashCode() % newTable.length);
+
+          // New space isn't empty
+          if (newTable[newHash] != null) {
+            current.setNext(newTable[newHash]);
+          }
+
           newTable[newHash] = current;
-          current = current.getNext();
+          current = nextEntry;
         }
       }
 
