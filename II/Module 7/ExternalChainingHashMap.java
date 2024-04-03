@@ -137,6 +137,7 @@ public class ExternalChainingHashMap<K, V> {
       }
 
       table[hash] = current.getNext();
+      --size;
       return current.getValue();
     }
 
