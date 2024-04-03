@@ -77,10 +77,36 @@ public class ExternalChainingHashMap<K, V> {
    */
   public V put(K key, V value) {
     checkForNull(key, value);
-    resizeBackingTable((2 * table.length) + 1);
+    int hash = Math.abs(key.hashCode() % table.length);
+    double futureLoadFactor = (size + 1) / (double) table.length;
 
-    int k = key.hashCode();
-    k = k % table.length;
+    if (futureLoadFactor > MAX_LOAD_FACTOR) {
+      resizeBackingTable((2 * table.length) + 1);
+    }
+
+    // Search for duplicates
+    ExternalChainingMapEntry<K, V> current = table[hash];
+
+    while (current != null) {
+      if (current.getKey().equals(key)) {
+        // Replace OLD value with NEW value
+        V oldValue = current.getValue();
+        current.setValue(value);
+        return oldValue;
+      }
+      current = current.getNext();
+    }
+
+    ExternalChainingMapEntry<K, V> newEntry = new ExternalChainingMapEntry(key, value);
+
+    // Add the data to HashMap
+    if (table[hash] != null) {
+      newEntry.setNext(table[hash]);
+    }
+
+    table[hash] = newEntry;
+    ++size;
+    return null;
   }
 
   /**
@@ -113,34 +139,30 @@ public class ExternalChainingHashMap<K, V> {
    * @param Length The new length of the backing table.
    */
   private void resizeBackingTable(int length) {
-    double futureLoadFactor = (size + 1) / table.length;
+    // Resize
+    ExternalChainingMapEntry<K, V>[] newTable = new ExternalChainingMapEntry[length];
 
-    if (futureLoadFactor > MAX_LOAD_FACTOR) {
-      // Resize
-      ExternalChainingMapEntry<K, V>[] newTable = (ExternalChainingMapEntry<K, V>[]) new ExternalChainingMapEntry[length];
+    for (int i = 0; i < table.length; i++) {
+      ExternalChainingMapEntry<K, V> current = table[i];
 
-      for (int i = 0; i < table.length; i++) {
-        ExternalChainingMapEntry<K, V> current = table[i];
+      while (current != null) {
+        ExternalChainingMapEntry<K, V> nextEntry = current.getNext();
+        current.setNext(null);
 
-        while (current != null) {
-          ExternalChainingMapEntry<K, V> nextEntry = current.getNext();
-          current.setNext(null);
+        // Rehash
+        int newHash = Math.abs(current.getKey().hashCode() % newTable.length);
 
-          // Rehash
-          int newHash = Math.abs(current.getKey().hashCode() % newTable.length);
-
-          // New space isn't empty
-          if (newTable[newHash] != null) {
-            current.setNext(newTable[newHash]);
-          }
-
-          newTable[newHash] = current;
-          current = nextEntry;
+        // New space isn't empty
+        if (newTable[newHash] != null) {
+          current.setNext(newTable[newHash]);
         }
-      }
 
-      table = newTable;
+        newTable[newHash] = current;
+        current = nextEntry;
+      }
     }
+
+    table = newTable;
   }
 
   /**
