@@ -26,12 +26,6 @@ public class ExternalChainingHashMap<K, V> {
   private ExternalChainingMapEntry<K, V>[] table;
   private int size;
 
-  private void checkForNull(K key, V value) {
-    if (key == null || value == null) {
-      throw new IllegalArgumentException("Data cannot be null!");
-    }
-  }
-
   /**
    * Constructs a new ExternalChainingHashMap with an initial capacity of INITIAL_CAPACITY.
    */
@@ -76,7 +70,10 @@ public class ExternalChainingHashMap<K, V> {
    * @throws java.lang.IllegalArgumentException If key or value is null.
    */
   public V put(K key, V value) {
-    checkForNull(key, value);
+    if (key == null || value == null) {
+      throw new IllegalArgumentException("Data cannot be null!");
+    }
+
     int hash = Math.abs(key.hashCode() % table.length);
     double futureLoadFactor = (size + 1) / (double) table.length;
 
@@ -118,7 +115,9 @@ public class ExternalChainingHashMap<K, V> {
    * @throws java.util.NoSuchElementException   If the key is not in the map.
    */
   public V remove(K key) {
-    // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+    if (key == null) {
+      throw new IllegalArgumentException("Data cannot be null!");
+    }
   }
 
   /**
