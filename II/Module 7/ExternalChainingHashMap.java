@@ -129,11 +129,35 @@ public class ExternalChainingHashMap<K, V> {
     ExternalChainingMapEntry<K, V> current = table[hash];
 
     // 1 element
-    if (current.equals(key) && current.getNext().equals(null)) {
-      table[hash] = null;
+    if (current.getKey().equals(key)) {
+      if (current.getNext().equals(null)) {
+        table[hash] = null;
+        return current.getValue();
+      }
+
+      table[hash] = current.getNext();
       return current.getValue();
     }
+
+    ExternalChainingMapEntry<K, V> returningValue = new ExternalChainingMapEntry(null, null);
+
+    // 2+ elements
+    while (current.getNext() != null) {
+      if (current.getNext().equals(key)) {
+        // Found it
+        returningValue.setValue(current.getNext().getValue());
+
+        // Jump the found value in Linked List
+        current.setNext(current.getNext().getNext());
+      }
+
+      current = current.getNext();
+    }
+
+    --size;
+    return returningValue.getValue();
   }
+
 
   /**
    * Helper method stub for resizing the backing table to length.
