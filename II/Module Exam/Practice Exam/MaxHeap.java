@@ -97,3 +97,15 @@ public class MaxHeap<T extends Comparable<? super T>> {
       return size;
   }
 }
+
+/*
+[Executed at: Thu Apr 4 15:33:09 PDT 2024]
+
+============================================================
+MaxHeap.java successfully compiled.
+============================================================
+Success: All Tests Passed.
+
+Score: 10.0 / 10.0
+============================================================
+*/
