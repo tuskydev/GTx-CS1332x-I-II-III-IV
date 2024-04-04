@@ -119,7 +119,20 @@ public class BST<T extends Comparable<? super T>> {
       else {
         BSTNode<T> tempDummyNode = new BSTNode<>(null);
 
+        curr.setRight(findSuccessorNode(curr.getRight(), tempDummyNode));
+        curr.setData(tempDummyNode.getData());
       }
+    }
+
+    return curr;
+  }
+
+  private BSTNode<T> findSuccessorNode(BSTNode<T> curr, BSTNode<T> tempNode) {
+    if (curr.getLeft() == null) {
+      tempNode.setData(curr.getData());
+      return curr.getRight();
+    } else {
+      curr.setLeft(findSuccessorNode(curr.getLeft(), tempNode));
     }
 
     return curr;
@@ -151,3 +164,15 @@ public class BST<T extends Comparable<? super T>> {
       return size;
   }
 }
+
+/*
+[Executed at: Thu Apr 4 14:44:38 PDT 2024]
+
+============================================================
+BST.java successfully compiled.
+============================================================
+Success: All Tests Passed.
+
+Score: 10.0 / 10.0
+============================================================
+*/
