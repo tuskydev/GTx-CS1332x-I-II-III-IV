@@ -77,7 +77,52 @@ public class BST<T extends Comparable<? super T>> {
    * @throws java.util.NoSuchElementException If the data is not in the tree.
    */
   public T remove(T data) {
-      // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+    BSTNode<T> dummyNode;
+
+    root = removeHelper(root, data, dummyNode);
+
+    return dummyNode.getData();
+  }
+
+  private BSTNode<T> removeHelper(BSTNode<T>curr, T data, BSTNode<T> dummy) {
+    if (curr == null) {
+      throw new NoSuchElementException("Data not found!");
+    }
+    else if (data.compareTo(curr.getData()) < 0) {
+      // Data is smaller
+      curr.setLeft(removeHelper(curr.getLeft(), data, dummy));
+    }
+    else if (data.compareTo(curr.getData()) < 0) {
+    // Data is bigger
+      curr.setRight(removeHelper(curr.getRight(), data, dummy));
+    }
+
+    else {
+      // Data found
+      dummy.setData(curr.getData());
+      --size;
+
+      // 0 Children
+      if (curr.getLeft() == null && curr.getRight() == null) {
+        return null;
+      }
+
+      // 1 Children
+      else if (curr.getLeft() != null && curr.getRight() == null) {
+        return curr.getLeft();
+      }
+      else if (curr.getLeft() == null && curr.getRight() != null) {
+        return curr.getRight();
+      }
+
+      // 2 Children
+      else {
+        BSTNode<T> tempDummyNode;
+
+      }
+    }
+
+    return dummy;
   }
 
   /**
