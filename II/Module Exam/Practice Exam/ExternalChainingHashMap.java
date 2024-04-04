@@ -40,8 +40,20 @@ public class ExternalChainingHashMap<K, V> {
    * @return true if the key is contained within the map, false otherwise.
    */
   public boolean containsKey(K key) {
-      // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+    int hash = Math.abs(key.hashCode() % table.length);
+    ExternalChainingMapEntry<K, V> curr = table[hash];
+
+    while (curr != null) {
+        if (curr.getKey().equals(key)) {
+            return true;
+        }
+
+        curr = curr.getNext();
+    }
+
+    return false;
   }
+
 
   /**
    * Returns the table of the map.
