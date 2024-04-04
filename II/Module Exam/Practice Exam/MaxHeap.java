@@ -40,7 +40,35 @@ public class MaxHeap<T extends Comparable<? super T>> {
    * @return The data that was removed.
    */
   public T remove() {
-      // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+    T removedValue = backingArray[1];
+    backingArray[1] = backingArray[size];
+    backingArray[size--] = null;
+    heapify(1);
+
+    return removedValue;
+  }
+
+  private void heapify(int index) {
+    int currBiggest = index;
+
+    if (index * 2 <= size && backingArray[index * 2].compareTo(backingArray[currBiggest]) > 0) {
+      // LEFT side is bigger than currBiggest
+      currBiggest = index * 2;
+    }
+
+    if ((index * 2) + 1 <= size && backingArray[(index * 2) + 1].compareTo(backingArray[currBiggest]) > 0) {
+      // RIGHT side is bigger than currBiggest
+      currBiggest = (index * 2) + 1;
+    }
+
+    // Swap if there's a bigger value
+    if (currBiggest != index) {
+      T savedSwappedValue = backingArray[index];
+      backingArray[index] = backingArray[currBiggest];
+      backingArray[currBiggest] = savedSwappedValue;
+
+      heapify(currBiggest);
+    }
   }
 
   /**
