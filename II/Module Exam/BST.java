@@ -32,7 +32,25 @@ public class BST<T extends Comparable<? super T>> {
      * @throws java.util.NoSuchElementException If the data is not in the tree.
      */
     public T get(T data) {
-        // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        return getHelper(root, data);
+
+    }
+
+    private T getHelper(BSTNode<T> curr, T data) {
+        if (curr == null) {
+            throw new NoSuchElementException("Data not found!");
+        }
+        int comparison = data.compareTo(curr.getData());
+        if (comparison < 0) {
+            // Data is smaller, go left
+            return getHelper(curr.getLeft(), data);
+        } else if (comparison > 0) {
+            // Data is bigger, go right
+            return getHelper(curr.getRight(), data);
+        } else {
+            // Found the data
+            return curr.getData();
+        }
     }
 
     /**
@@ -62,8 +80,67 @@ public class BST<T extends Comparable<? super T>> {
      * @throws java.util.NoSuchElementException If the data is not in the tree.
      */
     public T remove(T data) {
-        // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        BSTNode<T> dummyNode = new BSTNode<>(null);
+    
+        root = removeHelper(root, data, dummyNode);
+    
+        return dummyNode.getData();
+      }
+    
+      private BSTNode<T> removeHelper(BSTNode<T>curr, T data, BSTNode<T> dummy) {
+        if (curr == null) {
+          throw new NoSuchElementException("Data not found!");
+        }
+        else if (data.compareTo(curr.getData()) < 0) {
+          // Data is smaller
+          curr.setLeft(removeHelper(curr.getLeft(), data, dummy));
+        }
+        else if (data.compareTo(curr.getData()) > 0) {
+        // Data is bigger
+          curr.setRight(removeHelper(curr.getRight(), data, dummy));
+        }
+    
+        else {
+          // Data found
+          dummy.setData(curr.getData());
+          --size;
+    
+          // 0 Children
+          if (curr.getLeft() == null && curr.getRight() == null) {
+            return null;
+          }
+    
+          // 1 Children
+          else if (curr.getLeft() != null && curr.getRight() == null) {
+            return curr.getLeft();
+          }
+          else if (curr.getLeft() == null && curr.getRight() != null) {
+            return curr.getRight();
+          }
+    
+          // 2 Children
+          else {
+            BSTNode<T> tempDummyNode = new BSTNode<>(null);
+    
+            curr.setRight(findPredecessorNode(curr.getRight(), tempDummyNode));
+            curr.setData(tempDummyNode.getData());
+          }
+        }
+    
+        return curr;
+      }
+
+      private BSTNode<T> findPredecessorNode(BSTNode<T> curr, BSTNode<T> tempNode) {
+        if (curr.getLeft() == null) {
+            tempNode.setData(curr.getData());
+            return curr.getRight();
+        } else {
+            curr.setLeft(findPredecessorNode(curr.getLeft(), tempNode));
+        }
+    
+        return curr;
     }
+    
 
 
     /**
