@@ -43,7 +43,18 @@ public class ExternalChainingHashMap<K, V> {
      * @throws java.util.NoSuchElementException If the key is not in the map.
      */
     public V get(K key) {
-        // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        int hash = Math.abs(key.hashCode() % table.length);
+        ExternalChainingMapEntry<K, V> curr = table[hash];
+
+        while (curr != null) {
+            if (curr.getKey().equals(key)) {
+                return curr.getValue();
+            }
+
+            curr = curr.getNext();
+        }
+
+        throw new NoSuchElementException("Key not found!");
     }
 
     /**
