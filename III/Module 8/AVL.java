@@ -99,7 +99,7 @@ public class AVL<T extends Comparable<? super T>> {
 
         AVLNode<T> dummy = new AVLNode<>(null);
         root = removeHelper(root, data, dummy);
-        return data;
+        return dummy.getData();
     }
 
     private AVLNode<T> removeHelper(AVLNode<T> curr, T data, AVLNode<T> dummy) {
@@ -114,9 +114,7 @@ public class AVL<T extends Comparable<? super T>> {
         // Go right
         else if (data.compareTo(curr.getData()) > 0) {
             curr.setRight(removeHelper(curr.getRight(), data, dummy));
-        }
-        // Data found
-        else {
+        } else { // Data found
             dummy.setData(curr.getData());
             --size;
 
@@ -125,31 +123,33 @@ public class AVL<T extends Comparable<? super T>> {
                 return null;
             }
             // 1 children
-            else if (curr.getLeft() == null && curr.getRight() != null) {
+            else if (curr.getLeft() == null) {
                 return curr.getRight();
             }
-            else if (curr.getLeft() != null && curr.getRight() == null) {
+            else if (curr.getRight() == null) {
                 return curr.getLeft();
             }
             // 2 children
             else {
                 AVLNode<T> dummyTwo = new AVLNode<>(null);
-                findSuccessor(curr.getRight(), dummyTwo);
-                return dummyTwo;
+                curr.setRight(findSuccessor(curr.getRight(), dummyTwo));
+                curr.setData(dummyTwo.getData());
             }
-
         }
 
         balance(curr);
         return curr;
     }
 
-    private void findSuccessor(AVLNode<T> curr, AVLNode<T> dummyTwo) {
+    private AVLNode<T> findSuccessor(AVLNode<T> curr, AVLNode<T> dummyTwo) {
         if (curr.getLeft() == null) {
             dummyTwo.setData(curr.getData());
+            return curr.getRight();
         } else {
-            findSuccessor(curr.getLeft(), dummyTwo);
+            curr.setLeft(findSuccessor(curr.getLeft(), dummyTwo));
         }
+
+        return balance(curr);
     }
 
     /**
