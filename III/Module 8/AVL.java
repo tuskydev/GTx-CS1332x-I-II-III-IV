@@ -34,7 +34,33 @@ public class AVL<T extends Comparable<? super T>> {
      * @throws java.lang.IllegalArgumentException If data is null.
      */
     public void add(T data) {
-        // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        if (data == null) {
+            throw new IllegalArgumentException("Data cannot be null!");
+        }
+
+        root = addHelper(root, data);
+    }
+
+    private AVLNode<T> addHelper(AVLNode<T> curr, T data) {
+        if (curr == null) {
+            ++size;
+            return new AVLNode<T>(data);
+        }
+        // Data is same
+        else if (data.compareTo(curr.getData()) == 0) {
+            return curr;
+        }
+        // Less than
+        else if (data.compareTo(curr.getData()) < 0) {
+            curr.setLeft(addHelper(curr.getLeft(), data));
+        }
+        // Greater than
+        else if (data.compareTo(curr.getData()) > 0) {
+            curr.setRight(addHelper(curr.getRight(), data));
+        }
+
+        balance(curr);
+        return curr;
     }
 
     /**
