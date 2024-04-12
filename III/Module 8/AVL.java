@@ -126,18 +126,16 @@ public class AVL<T extends Comparable<? super T>> {
    * @return The AVLNode that the caller should return.
    */
   public AVLNode<T> balance(AVLNode<T> currentNode) {
-      // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
-
       /* First, we update the height and balance factor of the current node. */
       updateHeightAndBF(currentNode);
 
-      if ( /* Condition for a right heavy tree. */ ) {
-          if ( /* Condition for a right-left rotation. */ ) {
+      if (currentNode.getBalanceFactor() < -1) {
+          if (currentNode.getRight() != null && currentNode.getRight().getBalanceFactor() > 0) {
               currentNode.setRight(rotateRight(currentNode.getRight()));
           }
           currentNode = rotateLeft(currentNode);
-      } else if ( /* Condition for a left heavy tree. */ ) {
-          if ( /* Condition for a left-right rotation. */ ) {
+      } else if (currentNode.getBalanceFactor() > 1) {
+          if (currentNode.getLeft() != null && currentNode.getLeft().getBalanceFactor() < 0>) {
               currentNode.setLeft(rotateLeft(currentNode.getLeft()));
           }
           currentNode = rotateRight(currentNode);
