@@ -135,7 +135,7 @@ public class AVL<T extends Comparable<? super T>> {
           }
           currentNode = rotateLeft(currentNode);
       } else if (currentNode.getBalanceFactor() > 1) {
-          if (currentNode.getLeft() != null && currentNode.getLeft().getBalanceFactor() < 0>) {
+          if (currentNode.getLeft() != null && currentNode.getLeft().getBalanceFactor() < 0) {
               currentNode.setLeft(rotateLeft(currentNode.getLeft()));
           }
           currentNode = rotateRight(currentNode);
