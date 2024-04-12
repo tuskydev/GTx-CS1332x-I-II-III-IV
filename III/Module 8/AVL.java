@@ -59,8 +59,8 @@ public class AVL<T extends Comparable<? super T>> {
             curr.setRight(addHelper(curr.getRight(), data));
         }
 
-        balance(curr);
-        return curr;
+        // balance(curr);
+        return balance(curr);
     }
 
     /**
@@ -99,6 +99,7 @@ public class AVL<T extends Comparable<? super T>> {
 
         AVLNode<T> dummy = new AVLNode<>(null);
         root = removeHelper(root, data, dummy);
+
         return dummy.getData();
     }
 
@@ -119,7 +120,7 @@ public class AVL<T extends Comparable<? super T>> {
             --size;
 
             // 0 children
-            if (curr.getLeft() == null && curr.getRight() == null) {
+            if (curr.getLeft() == null & curr.getRight() == null) {
                 return null;
             }
             // 1 children
@@ -137,8 +138,7 @@ public class AVL<T extends Comparable<? super T>> {
             }
         }
 
-        balance(curr);
-        return curr;
+        return balance(curr);
     }
 
     private AVLNode<T> findSuccessor(AVLNode<T> curr, AVLNode<T> dummyTwo) {
