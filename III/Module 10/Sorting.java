@@ -29,10 +29,9 @@ public class Sorting {
     int stopIndex = arr.length - 1;
 
     while (stopIndex != 0) {
-      int i = 0;
       int lastSwapped = 0;
 
-      while (i < stopIndex) {
+      for (int i = 0; i < stopIndex; i++) {
         if (comparator.compare(arr[i], arr[i + 1]) > 0) {
           T tempValue = arr[i];
           arr[i] = arr[i + 1];
@@ -40,8 +39,6 @@ public class Sorting {
 
           lastSwapped = i;
         }
-
-        ++i;
       }
 
       stopIndex = lastSwapped;
