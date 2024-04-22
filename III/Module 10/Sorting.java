@@ -30,7 +30,7 @@ public class Sorting {
 
     while (stopIndex != 0) {
       int i = 0;
-      int lastSwapped;
+      int lastSwapped = 0;
 
       while (i < stopIndex) {
         if (comparator.compare(arr[i], arr[i + 1]) > 0) {
