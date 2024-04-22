@@ -73,7 +73,7 @@ public class Sorting {
         }
       }
 
-      T   = arr[i];
+      T tempVal = arr[i];
       arr[i] = arr[maxVal];
       arr[maxVal] = tempVal;
     }
