@@ -64,7 +64,19 @@ public class Sorting {
    * @param comparator The Comparator used to compare the data in arr.
    */
   public static <T> void selectionSort(T[] arr, Comparator<T> comparator) {
-      // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+    for (int i = arr.length - 1; i >= 1; i--) {
+      int maxVal = 0;
+
+      for (int e = 1; e <= i; e++) {
+        if (comparator.compare(arr[e], arr[maxVal]) > 0) {
+          maxVal = e;
+        }
+      }
+
+      T   = arr[i];
+      arr[i] = arr[maxVal];
+      arr[maxVal] = tempVal;
+    }
   }
 
   /**
