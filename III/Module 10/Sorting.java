@@ -98,9 +98,9 @@ public class Sorting {
    * @param comparator The Comparator used to compare the data in arr.
    */
   public static <T> void insertionSort(T[] arr, Comparator<T> comparator) {
-    for (int i = 0; i < arr.length; i++) {
+    for (int i = 1; i < arr.length; i++) {
       int j = i;
-      while (j < 0 && comparator.compare(arr[j], arr[j - 1]) < 0) {
+      while (j > 0 && comparator.compare(arr[j], arr[j - 1]) < 0) {
         T tempVal = arr[j];
         arr[j] = arr[j - 1];
         arr[j - 1] = tempVal;
