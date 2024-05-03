@@ -104,7 +104,22 @@ public class Sorting {
   */
   public static void lsdRadixSort(int[] arr) {
     LinkedList<Integer>[] buckets = new LinkedList[19];
+    int k = findLongestDigit(arr);
 
-    
+
   }
+}
+
+// One loop through array to find longest digit number
+private static int findLongestDigit(int[] arr) {
+  for (int i = 0; i < arr.length; i++) {
+    int counter = 0;
+    int num = arr[i];
+    while (num > 0) {
+      num = num / 10;
+      ++counter;
+    }
+  }
+
+  return counter;
 }
