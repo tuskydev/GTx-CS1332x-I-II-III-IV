@@ -45,8 +45,8 @@ public class Sorting {
 
     int length = arr.length;
     int midIndex = length / 2;
-    T[] left = Arrays.copyOfRange(arr, 0, midIndex - 1);
-    T[] right = Arrays.copyOfRange(arr, midIndex, length - 1);
+    T[] left = Arrays.copyOfRange(arr, 0, midIndex);
+    T[] right = Arrays.copyOfRange(arr, midIndex, length);
 
     mergeSort(left, comparator);
     mergeSort(right, comparator);
