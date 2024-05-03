@@ -39,7 +39,7 @@ public class Sorting {
    * @param comparator The Comparator used to compare the data in arr.
   */
   public static <T> void mergeSort(T[] arr, Comparator<T> comparator) {
-    if (arr.length == 1) {
+    if (arr.length <= 1) {
       return;
     }
 
