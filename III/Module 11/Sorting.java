@@ -112,14 +112,21 @@ public class Sorting {
 
 // One loop through array to find longest digit number
 private static int findLongestDigit(int[] arr) {
-  for (int i = 0; i < arr.length; i++) {
+  int highestCounter = 0;
+
+  for (int num: arr) {
     int counter = 0;
-    int num = arr[i];
-    while (num > 0) {
-      num = num / 10;
+    int newNum = Math.abs(num);
+
+    while (newNum > 0) {
+      newNum = newNum / 10;
       ++counter;
+    }
+
+    if (highestCounter < counter) {
+      highestCounter = counter;
     }
   }
 
-  return counter;
+  return highestCounter;
 }
