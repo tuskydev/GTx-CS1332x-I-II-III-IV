@@ -62,7 +62,6 @@ public class Sorting {
         ++j;
       }
     }
-
     while (i < left.length) {
       arr[i + j] = left[i];
       ++i;
