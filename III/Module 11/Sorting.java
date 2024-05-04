@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -103,18 +104,18 @@ public class Sorting {
    * @param arr The array to be sorted.
   */
   public static void lsdRadixSort(int[] arr) {
-    LinkedList<Integer>[] buckets = new LinkedList[19];
+    ArrayList<LinkedList<Integer>> buckets = new ArrayList<>(19);
+
     int k = findLongestDigit(arr);
     int basePower = 1;
 
     for (int iteration = 0; iteration < k; iteration++) {
-      if (iteration != 0) {
-        basePower = basePower * 10;
+      for (int i = 0; i < arr.length; i++) {
+        int numBucket = (arr[i] / basePower) % 10;
+        buckets[numBucket + 9].add(arr[i]);
       }
 
-      for (int i = 0; i < arr.length; i++) {
-        if ()
-      }
+      basePower = basePower * 10;
     }
   }
 }
