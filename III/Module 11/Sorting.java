@@ -106,13 +106,17 @@ public class Sorting {
   public static void lsdRadixSort(int[] arr) {
     ArrayList<LinkedList<Integer>> buckets = new ArrayList<>(19);
 
+    for (int i = 0; i < 19; i++) {
+      buckets.add(new LinkedList<Integer>());
+    }
+
     int k = findLongestDigit(arr);
     int basePower = 1;
 
     for (int iteration = 0; iteration < k; iteration++) {
       for (int i = 0; i < arr.length; i++) {
         int numBucket = (arr[i] / basePower) % 10;
-        buckets[numBucket + 9].add(arr[i]);
+        buckets.get(numBucket + 9).add(arr[i]);
       }
 
       basePower = basePower * 10;
