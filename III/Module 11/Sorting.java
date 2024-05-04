@@ -108,10 +108,12 @@ public class Sorting {
     int basePower = 1;
 
     for (int iteration = 0; iteration < k; iteration++) {
-      basePower = basePower * 10;
+      if (iteration != 0) {
+        basePower = basePower * 10;
+      }
 
       for (int i = 0; i < arr.length; i++) {
-        
+        if ()
       }
     }
   }
