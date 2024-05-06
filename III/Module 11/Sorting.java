@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.LinkedList;
@@ -46,8 +45,14 @@ public class Sorting {
 
     int length = arr.length;
     int midIndex = length / 2;
-    T[] left = Arrays.copyOfRange(arr, 0, midIndex);
-    T[] right = Arrays.copyOfRange(arr, midIndex, length);
+    T[] left = (T[]) new Object[midIndex];
+    T[] right = (T[]) new Object[length - midIndex];
+    for (int i = 0; i < midIndex; i++) {
+      left[i] = arr[i];
+    }
+    for (int i = midIndex; i < length; i++) {
+      right[i - midIndex] = arr[i];
+    }
 
     mergeSort(left, comparator);
     mergeSort(right, comparator);
@@ -128,25 +133,25 @@ public class Sorting {
       }
     }
   }
-}
 
-// One loop through array to find longest digit number
-private static int findLongestDigit(int[] arr) {
-  int highestCounter = 0;
+  // One loop through array to find longest digit number
+  private static int findLongestDigit(int[] arr) {
+    int highestCounter = 0;
 
-  for (int num: arr) {
-    int counter = 0;
-    int newNum = Math.abs(num);
+    for (int num: arr) {
+      int counter = 0;
+      int newNum = Math.abs(num);
 
-    while (newNum > 0) {
-      newNum = newNum / 10;
-      ++counter;
+      while (newNum > 0) {
+        newNum = newNum / 10;
+        ++counter;
+      }
+
+      if (highestCounter < counter) {
+        highestCounter = counter;
+      }
     }
 
-    if (highestCounter < counter) {
-      highestCounter = counter;
-    }
+    return highestCounter;
   }
-
-  return highestCounter;
 }
