@@ -105,7 +105,6 @@ public class Sorting {
   */
   public static void lsdRadixSort(int[] arr) {
     ArrayList<LinkedList<Integer>> buckets = new ArrayList<>(19);
-
     for (int i = 0; i < 19; i++) {
       buckets.add(new LinkedList<Integer>());
     }
@@ -120,6 +119,13 @@ public class Sorting {
       }
 
       basePower = basePower * 10;
+
+      int idx = 0;
+      for (LinkedList<Integer> bucket : buckets) {
+        while (bucket.size() != 0) {
+          arr[idx] = bucket.removeFirst();
+        }
+      }
     }
   }
 }
