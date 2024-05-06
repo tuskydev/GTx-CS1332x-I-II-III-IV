@@ -123,14 +123,14 @@ public class Sorting {
         buckets.get(numBucket + 9).add(arr[i]);
       }
 
-      basePower = basePower * 10;
-
       int idx = 0;
       for (LinkedList<Integer> bucket : buckets) {
         while (bucket.size() != 0) {
-          arr[idx] = bucket.removeFirst();
+          arr[idx++] = bucket.removeFirst();
         }
       }
+
+      basePower = basePower * 10;
     }
   }
 
