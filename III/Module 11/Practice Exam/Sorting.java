@@ -45,5 +45,12 @@ public class Sorting {
     for (int i = midIndex; i < length; i++) {
       right[i - midIndex] = arr[i];
     }
+
+    mergeSort(left, comparator);
+    mergeSort(right, comparator);
+
+    int i = 0, j = 0;
+
+    
   }
 }
