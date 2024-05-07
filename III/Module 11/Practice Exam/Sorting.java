@@ -51,6 +51,14 @@ public class Sorting {
 
     int i = 0, j = 0;
 
-    
+    while (i != left.length && j != right.length) {
+      if (comparator.compare(left[i], right[j]) <= 0) {
+        arr[i + j] = left[i];
+        ++i;
+      } else {
+        arr[i + j] = right[j];
+        ++j;
+      }
+    }
   }
 }
