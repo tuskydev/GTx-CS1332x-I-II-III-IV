@@ -60,5 +60,14 @@ public class Sorting {
         ++j;
       }
     }
+
+    while (i < left.length) {
+      arr[i + j] = left [i];
+      ++i;
+    }
+    while (j < right.length) {
+      arr[i + j] = right [j];
+      ++j;
+    }
   }
 }
