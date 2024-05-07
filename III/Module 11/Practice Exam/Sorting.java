@@ -31,7 +31,7 @@ public class Sorting {
    * @param comparator The Comparator used to compare the data in arr.
    */
   public static <T> void mergeSort(T[] arr, Comparator<T> comparator) {
-    if (arr.length == 1) {
+    if (arr.length <= 1) {
       return;
     }
 
@@ -71,3 +71,14 @@ public class Sorting {
     }
   }
 }
+
+/*
+[Executed at: Mon May 6 18:42:25 PDT 2024]
+
+============================================================
+Sorting.java successfully compiled.
+============================================================
+Success: All Tests Passed.
+
+Score: 10.0 / 10.0
+*/
