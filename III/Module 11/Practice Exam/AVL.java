@@ -33,7 +33,11 @@ public class AVL<T extends Comparable<? super T>> {
    * @param data The data to add.
    */
   public void add(T data) {
-      // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+      while (root != null) {
+        if (root.getLeft().getData() < data) {
+          
+        }
+      }
   }
 
   /**
