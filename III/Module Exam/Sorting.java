@@ -36,11 +36,31 @@ public class Sorting {
      * @param k   The number of digits in the greatest magnitude number in arr.
      */
     public static void lsdRadixSort(int[] arr, int k) {
-        List<LinkedList<Integer>> buckets= new List<>(19);
-        for (int i = 0; i < 19; i++) {
-          buckets.add(new LinkedList<>());
+      int longestInt = findLongestInt(arr);
+      List<LinkedList<Integer>> buckets= new List<>(19);
+      for (int i = 0; i < 19; i++) {
+        buckets.add(new LinkedList<>());
+      }
+
+    }
+
+    private static Integer findLongestInt(int[] arr) {
+      int counter = 0;
+
+      for (int num : arr) {
+        int count = 0;
+        int temp = num;
+
+        while (temp > 0) {
+          temp = temp / 10;
+          count++;
         }
 
-        
+        if (count > counter) {
+          counter = count;
+        }
+      }
+
+      return counter;
     }
 }
