@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.Queue;
 
 /**
@@ -38,7 +39,7 @@ public class Sorting {
     public static void lsdRadixSort(int[] arr, int k) {
       int longestInt = findLongestInt(arr);
       int basePower = 1;
-      List<LinkedList<Integer>> buckets = new List<>(19);
+      ArrayList<LinkedList<Integer>> buckets = new ArrayList<>(19);
       for (int i = 0; i < 19; i++) {
         buckets.add(new LinkedList<>());
       }
@@ -46,7 +47,12 @@ public class Sorting {
       for (int iteration = 0; iteration < longestInt; iteration++) {
         for (int i = 0; i < arr.length; i++) {
           int numBucket = (arr[i] / basePower) % 10;
-          buckets.get(numBucket).add(arr[i]);
+          buckets.get(numBucket + 9).add(arr[i]);
+        }
+
+        int idx = 0;
+        while (buckets.get(idx) != null) {
+          arr[++idx] = buckets.get(idx).removeFirst();
         }
 
         basePower = basePower * 10;
