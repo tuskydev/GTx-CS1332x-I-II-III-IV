@@ -36,6 +36,11 @@ public class Sorting {
      * @param k   The number of digits in the greatest magnitude number in arr.
      */
     public static void lsdRadixSort(int[] arr, int k) {
-        // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        List<LinkedList<Integer>> buckets= new List<>(19);
+        for (int i = 0; i < 19; i++) {
+          buckets.add(new LinkedList<>());
+        }
+
+        
     }
 }
