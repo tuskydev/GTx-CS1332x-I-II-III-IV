@@ -23,6 +23,23 @@ public class Sorting {
      * @param comparator The Comparator used to compare the data in arr.
      */
     public static <T> void bubbleSort(T[] arr, Comparator<T> comparator) {
-        // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        int stopIndex = arr.length - 1;
+
+        while (stopIndex != 0) {
+          int i = 0;
+          int lastSwapped = 0;
+
+          while (i < stopIndex) {
+            if (comparator.compare(arr[i], arr[i + 1]) > 0) {
+              T temp = arr[i];
+              arr[i] = arr[i + 1];
+              arr[i + 1] = temp;
+
+              lastSwapped = i;
+            }
+            ++i;
+          }
+          stopIndex = lastSwapped;
+        }
     }
 }
