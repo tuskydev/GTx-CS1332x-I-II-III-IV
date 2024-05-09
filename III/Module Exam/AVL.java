@@ -93,7 +93,7 @@ public class AVL<T extends Comparable<? super T>> {
   public AVLNode<T> rotateRight(AVLNode<T> currentNode) {
     AVLNode<T> leftNode = currentNode.getLeft();
 
-    currentNode.setLeft(leftNode.getLeft());
+    currentNode.setLeft(leftNode.getRight());
     leftNode.setRight(currentNode);
 
     updateHeightAndBF(currentNode);
