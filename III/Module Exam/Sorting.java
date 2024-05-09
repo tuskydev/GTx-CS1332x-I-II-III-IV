@@ -37,11 +37,20 @@ public class Sorting {
      */
     public static void lsdRadixSort(int[] arr, int k) {
       int longestInt = findLongestInt(arr);
-      List<LinkedList<Integer>> buckets= new List<>(19);
+      int basePower = 1;
+      List<LinkedList<Integer>> buckets = new List<>(19);
       for (int i = 0; i < 19; i++) {
         buckets.add(new LinkedList<>());
       }
 
+      for (int iteration = 0; iteration < longestInt; iteration++) {
+        for (int i = 0; i < arr.length; i++) {
+          int numBucket = (arr[i] / basePower) % 10;
+          buckets.get(numBucket).add(arr[i]);
+        }
+
+        basePower = basePower * 10;
+      }
     }
 
     private static Integer findLongestInt(int[] arr) {
