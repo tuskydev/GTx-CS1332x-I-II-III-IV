@@ -50,7 +50,15 @@ public class AVL<T extends Comparable<? super T>> {
    * @return The parent of the node passed in (after the rotation).
    */
   public AVLNode<T> rotateLeft(AVLNode<T> currentNode) {
-      // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+      T rightNode = currentNode.getRight();
+
+      currentNode.setRight(rightNode.getLeft);
+      rightNode.setLeft(currentNode);
+
+      updateHeightAndBF(currentNode);
+      updateHeightAndBF(rightNode);
+
+      return rightNode;
   }
 
   /**
