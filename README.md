@@ -14,7 +14,7 @@
 
 
 ### Image of Advanced Data Structure Implementation
-![image](https://user-images.githubusercontent.com/52723004/93537444-7d4e3f00-f919-11ea-94d4-43ab6a3205a9.png)
+![image](https://github.com/tuskydev/GTx-CS1332x-I-II-III-IV/assets/52723004/e2144ea2-e13a-4c32-9808-ed84c6eebf24)
 
 ## Key Notes:
 * Code snippets and projects are solely for educational purposes.
